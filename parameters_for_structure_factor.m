@@ -9,12 +9,16 @@ function data = parameters_for_structure_factor(path_cif, path_vesta)
 % atom_site.
 
 %% Leer los archivos y meter todo el contenido en variables.
+if isfile(path_cif)
 array_of_cif = file2array(path_cif);
-array_of_vesta = file2array(path_vesta);
-
-%% Procesamiento de los contenidos en funciones.
 data.cif = process_cif_array(array_of_cif);
-data.vesta = process_vesta_array(array_of_vesta);
+end
+
+if isfile(path_vesta)
+    array_of_vesta = file2array(path_vesta);
+    data.vesta = process_vesta_array(array_of_vesta);
+end
+
 end
 
 %% Function to put the file into an string array
