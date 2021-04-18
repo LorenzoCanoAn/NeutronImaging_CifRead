@@ -8,9 +8,11 @@ function data = parameters_for_structure_factor(path_cif, path_vesta)
 % información en el .cif. Si la contiene, se expresa de la misma forma que
 % atom_site.
 
-%% Get content of files
+%% Leer los archivos y meter todo el contenido en variables.
 array_of_cif = file2array(path_cif);
 array_of_vesta = file2array(path_vesta);
+
+%% Procesamiento de los contenidos en funciones.
 data.cif = process_cif_array(array_of_cif);
 data.vesta = process_vesta_array(array_of_vesta);
 end
@@ -36,6 +38,9 @@ end
 
 %% Function to process the data array of the file
 function data = process_cif_array(array_of_file)
+    %% Procesamiento de la información del archivo cif
+    % Recomendaría que si lo que se quiere es ampliar la función, añadir
+    % nuevas funciones aquí, en vez de modificar las ya existentes.
     data.cell = get_cell_info(array_of_file);
     data.atom_site = get_atom_type_info(array_of_file);
     data.atom_site_aniso = get_atom_site_aniso_info(array_of_file);
